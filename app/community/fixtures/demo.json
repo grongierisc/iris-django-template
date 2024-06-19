@@ -1,0 +1,58 @@
+[
+    {
+        "model": "community.post",
+        "pk": 1,
+        "fields": {
+            "title": "Post The First",
+            "content": "Content for the first post"
+        }
+    },
+    {
+        "model": "community.post",
+        "pk": 2,
+        "fields": {
+            "title": "Post The Second",
+            "content": "Content for the Second post"
+        }
+    },
+    {
+        "model": "community.post",
+        "pk": 3,
+        "fields": {
+            "title": "Post The Third",
+            "content": "Content for the third post"
+        }
+    },
+    {
+        "model": "community.comment",
+        "pk": 1,
+        "fields": {
+            "content": "Comment for the first post",
+            "post": 1
+        }
+    },
+    {
+        "model": "community.comment",
+        "pk": 2,
+        "fields": {
+            "content": "Comment for the second post",
+            "post": 2
+        }
+    },
+    {
+        "model": "community.comment",
+        "pk": 3,
+        "fields": {
+            "content": "Another comment for the first post",
+            "post": 1
+        }
+    },
+    {
+        "model": "community.comment",
+        "pk": 4,
+        "fields": {
+            "content": "Another comment for the second post",
+            "post": 2
+        }
+    }
+]
