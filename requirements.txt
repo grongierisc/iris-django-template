@@ -1,0 +1,13 @@
+django>=5.0.0
+djangorestframework
+
+## iris community package
+# db-api
+intersystems_iris @ https://github.com/intersystems-community/intersystems-irispython/releases/download/3.7.7/intersystems_iris-3.7.7-py3-none-any.whl
+# django-iris
+django-iris
+# iop - interoperability on python
+iris-pex-embedded-python>=2.0.0
+
+## for testing
+pytest
