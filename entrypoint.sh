@@ -12,8 +12,8 @@ cd /irisdev/app/app
 # python manage.py flush --no-input
 python3 manage.py migrate
 # create superuser
-export DJANGO_SUPERUSER_PASSWORD=admin
-python3 manage.py createsuperuser --no-input --username admin --email admin@admin.fr
+export DJANGO_SUPERUSER_PASSWORD=SYS
+python3 manage.py createsuperuser --no-input --username SuperUser --email admin@admin.fr
 
 # load demo data
 python3 manage.py loaddata community/fixtures/demo.json
