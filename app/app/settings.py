@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'community',
     'sqloniris',
+    'interop',
     'rest_framework'
 ]
 
@@ -89,8 +90,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django_iris",
-        "HOST": "localhost",
-        "PORT": 59942,
+        "EMBEDDED": True,
         "NAMESPACE": "IRISAPP",
         "USER":"SuperUser",
         "PASSWORD":"SYS",

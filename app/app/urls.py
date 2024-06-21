@@ -18,6 +18,7 @@ from django.urls import path,include
 from rest_framework import routers
 from community.views import PostViewSet, CommentViewSet
 from sqloniris.views import index
+from interop.views import index as interop_index
 
 router = routers.DefaultRouter()
 router.register(r'posts', PostViewSet)
@@ -28,4 +29,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('iris/', index),
+    path('interop/', interop_index)
 ]
