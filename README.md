@@ -361,3 +361,18 @@ iop -m /irisdev/app/app/interop/settings.py
 # start production
 iop --start Python.Production
 ```
+
+### How to serve static files
+
+To serve the static files in the Django application, we can use the following command:
+
+```bash
+cd /irisdev/app
+python3 manage.py collectstatic
+```
+
+This will collect the static files from the Django application and serve them in the `/irisdev/app/static` directory.
+
+To publish the static files in IRIS, configure the `Security->Applications->Web Applications` section.
+
+![web_applications](./misc/static.png)
