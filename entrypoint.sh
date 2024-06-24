@@ -18,6 +18,9 @@ python3 manage.py createsuperuser --no-input --username SuperUser --email admin@
 # load demo data
 python3 manage.py loaddata community/fixtures/demo.json
 
+# collect static files
+python3 manage.py collectstatic --no-input --clear
+
 # init iop
 iop --init
 
