@@ -1,12 +1,12 @@
-GET http://localhost:53795/django/iris
+GET http://localhost:53795/django/iris/
 Accept: application/json
 
 ### 
-GET http://localhost:53795/django/interop
+GET http://localhost:53795/django/interop/
 Accept: application/json
 
 ###
-GET http://localhost:53795/django/api/posts
+GET http://localhost:53795/django/api/posts/
 Accept: application/json
 
 ###
