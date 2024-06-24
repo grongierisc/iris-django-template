@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 import iris
 
@@ -9,4 +9,4 @@ def index(request):
     result = []
     for row in rs:
         result.append(row)
-    return HttpResponse(result)
+    return JsonResponse(result, safe=False)
