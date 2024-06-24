@@ -1,0 +1,26 @@
+GET http://localhost:53795/django/iris
+Accept: application/json
+
+### 
+GET http://localhost:53795/django/interop
+Accept: application/json
+
+###
+GET http://localhost:53795/django/api/posts
+Accept: application/json
+
+###
+GET http://localhost:53795/django/api/posts/1
+Accept: application/json
+
+###
+POST http://localhost:53795/django/api/posts/
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic SuperUser:SYS
+
+{
+  "title": "foo",
+  "content": "bar",
+  "comments": []
+}
