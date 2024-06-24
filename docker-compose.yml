@@ -12,6 +12,7 @@ services:
     ports: 
       - 1972
       - 53795:52773
+      - 8001:8001
       - 53773
     volumes:
       - ./:/irisdev/app
