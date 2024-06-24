@@ -302,4 +302,62 @@ NB : we don't use `JsonResponse` to simplify the code, we can use it if we want 
 
 ## Troubleshooting
 
-### How to run the Flask application in a standalone mode
+### How to run the Django application in a standalone mode
+
+To run the Django application in a standalone mode, we can use the following command:
+
+```bash
+cd /irisdev/app/app
+python3 manage.py runserver 8001
+```
+
+This will run the Django application on the default port `8001`.
+
+
+NB : You must be inside of the container to run this command.
+
+```bash
+docker exec -it iris-django-template-iris-1 bash
+```
+
+### Restart the application in IRIS
+
+Be in `DEBUG` mode make multiple calls to the application, and the changes will be reflected in the application.
+
+### How to access the IRIS Management Portal
+
+You can access the IRIS Management Portal by going to `http://localhost:53795/csp/sys/UtilHome.csp`.
+
+### Run this template locally
+
+For this you need to have IRIS installed on your machine.
+
+Next you need to create a namespace named `IRISAPP`.
+
+Install the requirements.
+
+```bash
+# Move to the app directory
+cd /irisdev/app/app
+
+# python manage.py flush --no-input
+python3 manage.py migrate
+# create superuser
+export DJANGO_SUPERUSER_PASSWORD=SYS
+python3 manage.py createsuperuser --no-input --username SuperUser --email admin@admin.fr
+
+# load demo data
+python3 manage.py loaddata community/fixtures/demo.json
+
+# collect static files
+python3 manage.py collectstatic --no-input --clear
+
+# init iop
+iop --init
+
+# load production
+iop -m /irisdev/app/app/interop/settings.py
+
+# start production
+iop --start Python.Production
+```
