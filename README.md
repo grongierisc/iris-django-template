@@ -35,7 +35,7 @@ The base URL is `http://localhost:53795/django/`.
 
 ## How to develop from this template
 
-See WSGI introduction article: **to be added**.
+See WSGI introduction article: [wsgi-introduction](https://community.intersystems.com/post/wsgi-support-introduction).
 
 TL;DR : You can toggle the `DEBUG` flag in the Security portal to make changes to be reflected in the application as you develop.
 
