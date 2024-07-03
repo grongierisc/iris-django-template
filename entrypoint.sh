@@ -12,6 +12,9 @@ iop --init
 # load production
 iop -m /irisdev/app/app/interop/settings.py
 
+# start production
+iop --start Python.Production --detach
+
 # Move to the app directory
 cd /irisdev/app/app
 
@@ -27,5 +30,5 @@ python3 manage.py loaddata community/fixtures/demo.json
 # collect static files
 python3 manage.py collectstatic --no-input --clear
 
-# start production
-iop --start Python.Production
+# open log in stdout
+iop --log
