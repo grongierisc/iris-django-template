@@ -6,6 +6,12 @@
 # wait for iris to be ready
 /usr/irissys/dev/Cloud/ICM/waitISC.sh
 
+# init iop
+iop --init
+
+# load production
+iop -m /irisdev/app/app/interop/settings.py
+
 # Move to the app directory
 cd /irisdev/app/app
 
@@ -20,12 +26,6 @@ python3 manage.py loaddata community/fixtures/demo.json
 
 # collect static files
 python3 manage.py collectstatic --no-input --clear
-
-# init iop
-iop --init
-
-# load production
-iop -m /irisdev/app/app/interop/settings.py
 
 # start production
 iop --start Python.Production
