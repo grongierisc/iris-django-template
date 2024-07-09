@@ -285,7 +285,7 @@ This file contains the Django views for the interoperability operations.
 ```python
 from django.http import HttpResponse
 
-from grongier.pex import Director
+from iop import Director
 
 bs = Director.create_python_business_service('BS')
 

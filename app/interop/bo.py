@@ -1,7 +1,7 @@
 import json
 import dataclasses
 
-from grongier.pex import BusinessOperation
+from iop import BusinessOperation
 
 from msg import HttpMessageRequest, HttpMessageResponse
 

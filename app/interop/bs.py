@@ -1,4 +1,4 @@
-from grongier.pex import BusinessService
+from iop import BusinessService
 from msg import HttpMessageRequest, HttpMessageResponse
 from django.core.handlers.wsgi import WSGIRequest
 
