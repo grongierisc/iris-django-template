@@ -29,5 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('iris/', index),
-    path('interop/', interop_index)
+    path('interop/', interop_index),
+    path('community/', include('community.urls')),
 ]
