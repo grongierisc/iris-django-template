@@ -9,5 +9,12 @@ django-iris>=0.2.5b4
 # iop - interoperability on python
 iris-pex-embedded-python>=2.0.0
 
+#for RAG
+llama-index
+transformers
+llama-index-embeddings-huggingface
+python-dotenv
+llama-iris
+
 ## for testing
 pytest

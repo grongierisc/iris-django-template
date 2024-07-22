@@ -1,319 +1,145 @@
-app/:
-app
-community
-interop
-manage.py
-sqloniris
-static
+.
+├── app
+│   ├── app
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── settings.cpython-312.pyc
+│   │   │   ├── urls.cpython-312.pyc
+│   │   │   └── wsgi.cpython-312.pyc
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── community
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── fixtures
+│   │   │   └── demo.json
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-312.pyc
+│   │   │       └── __init__.cpython-312.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-312.pyc
+│   │   │   ├── apps.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── models.cpython-312.pyc
+│   │   │   ├── serializers.cpython-312.pyc
+│   │   │   ├── urls.cpython-312.pyc
+│   │   │   └── views.cpython-312.pyc
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── documents
+│   │   ├── embedding.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-312.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── embedding.cpython-312.pyc
+│   │   │   ├── models.cpython-312.pyc
+│   │   │   ├── rag.cpython-312.pyc
+│   │   │   ├── serializers.cpython-312.pyc
+│   │   │   └── views.cpython-312.pyc
+│   │   ├── rag.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── frontend
+│   │   ├── babel.config.js
+│   │   ├── dist
+│   │   │   ├── css
+│   │   │   │   └── app.b2d625b8.css
+│   │   │   ├── favicon.ico
+│   │   │   ├── index.html
+│   │   │   └── js
+│   │   │       ├── app.76859503.js
+│   │   │       ├── app.76859503.js.map
+│   │   │       ├── chunk-vendors.6941e44d.js
+│   │   │       └── chunk-vendors.6941e44d.js.map
+│   │   ├── jsconfig.json
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── public
+│   │   │   ├── favicon.ico
+│   │   │   └── index.html
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── App.vue
+│   │   │   ├── assets
+│   │   │   │   └── logo.png
+│   │   │   ├── components
+│   │   │   │   ├── ConversationManager.vue
+│   │   │   │   ├── DocumentManager.vue
+│   │   │   │   └── HelloWorld.vue
+│   │   │   ├── main.js
+│   │   │   └── router
+│   │   │       └── index.js
+│   │   └── vue.config.js
+│   ├── health_records
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-312.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── models.cpython-312.pyc
+│   │   │   ├── serializers.cpython-312.pyc
+│   │   │   └── views.cpython-312.pyc
+│   │   ├── serializers.py
+│   │   └── views.py
+│   ├── interop
+│   │   ├── apps.py
+│   │   ├── bo.py
+│   │   ├── bs.py
+│   │   ├── __init__.py
+│   │   ├── msg.py
+│   │   ├── __pycache__
+│   │   │   ├── apps.cpython-312.pyc
+│   │   │   ├── bo.cpython-312.pyc
+│   │   │   ├── bs.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── msg.cpython-312.pyc
+│   │   │   ├── settings.cpython-312.pyc
+│   │   │   └── views.cpython-312.pyc
+│   │   ├── settings.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── manage.py
+│   └── sqloniris
+│       ├── apps.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── apps.cpython-312.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   └── views.cpython-312.pyc
+│       ├── tests.py
+│       └── views.py
+├── docker-compose.yml
+├── Dockerfile
+├── entrypoint.sh
+├── example.http
+├── files.txt
+├── iris-main.log
+├── LICENSE
+├── merge.cpf
+├── misc
+│   └── static.png
+├── output.txt
+├── README.md
+├── requirements.txt
+├── show_important_files.sh
+├── show_structure.sh
+└── waitISC.log
 
-app/app:
-asgi.py
-__init__.py
-__pycache__
-settings.py
-urls.py
-wsgi.py
-
-app/app/__pycache__:
-__init__.cpython-312.pyc
-settings.cpython-312.pyc
-urls.cpython-312.pyc
-wsgi.cpython-312.pyc
-
-app/community:
-admin.py
-apps.py
-fixtures
-__init__.py
-migrations
-models.py
-__pycache__
-serializers.py
-templates
-tests.py
-views.py
-
-app/community/fixtures:
-demo.json
-
-app/community/migrations:
-0001_initial.py
-__init__.py
-__pycache__
-
-app/community/migrations/__pycache__:
-0001_initial.cpython-312.pyc
-__init__.cpython-312.pyc
-
-app/community/__pycache__:
-admin.cpython-312.pyc
-apps.cpython-312.pyc
-__init__.cpython-312.pyc
-models.cpython-312.pyc
-serializers.cpython-312.pyc
-views.cpython-312.pyc
-
-app/community/templates:
-index.html
-
-app/interop:
-apps.py
-bo.py
-bs.py
-__init__.py
-msg.py
-__pycache__
-settings.py
-tests.py
-views.py
-
-app/interop/__pycache__:
-apps.cpython-312.pyc
-bo.cpython-312.pyc
-bs.cpython-312.pyc
-__init__.cpython-312.pyc
-msg.cpython-312.pyc
-settings.cpython-312.pyc
-views.cpython-312.pyc
-
-app/sqloniris:
-apps.py
-__init__.py
-__pycache__
-tests.py
-views.py
-
-app/sqloniris/__pycache__:
-apps.cpython-312.pyc
-__init__.cpython-312.pyc
-views.cpython-312.pyc
-
-app/static:
-admin
-rest_framework
-
-app/static/admin:
-css
-img
-js
-
-app/static/admin/css:
-autocomplete.css
-base.css
-changelists.css
-dark_mode.css
-dashboard.css
-forms.css
-login.css
-nav_sidebar.css
-responsive.css
-responsive_rtl.css
-rtl.css
-vendor
-widgets.css
-
-app/static/admin/css/vendor:
-select2
-
-app/static/admin/css/vendor/select2:
-LICENSE-SELECT2.md
-select2.css
-select2.min.css
-
-app/static/admin/img:
-calendar-icons.svg
-gis
-icon-addlink.svg
-icon-alert.svg
-icon-calendar.svg
-icon-changelink.svg
-icon-clock.svg
-icon-deletelink.svg
-icon-hidelink.svg
-icon-no.svg
-icon-unknown-alt.svg
-icon-unknown.svg
-icon-viewlink.svg
-icon-yes.svg
-inline-delete.svg
-LICENSE
-README.txt
-search.svg
-selector-icons.svg
-sorting-icons.svg
-tooltag-add.svg
-tooltag-arrowright.svg
-
-app/static/admin/img/gis:
-move_vertex_off.svg
-move_vertex_on.svg
-
-app/static/admin/js:
-actions.js
-admin
-autocomplete.js
-calendar.js
-cancel.js
-change_form.js
-collapse.js
-core.js
-filters.js
-inlines.js
-jquery.init.js
-nav_sidebar.js
-popup_response.js
-prepopulate_init.js
-prepopulate.js
-SelectBox.js
-SelectFilter2.js
-theme.js
-urlify.js
-vendor
-
-app/static/admin/js/admin:
-DateTimeShortcuts.js
-RelatedObjectLookups.js
-
-app/static/admin/js/vendor:
-jquery
-select2
-xregexp
-
-app/static/admin/js/vendor/jquery:
-jquery.js
-jquery.min.js
-LICENSE.txt
-
-app/static/admin/js/vendor/select2:
-i18n
-LICENSE.md
-select2.full.js
-select2.full.min.js
-
-app/static/admin/js/vendor/select2/i18n:
-af.js
-ar.js
-az.js
-bg.js
-bn.js
-bs.js
-ca.js
-cs.js
-da.js
-de.js
-dsb.js
-el.js
-en.js
-es.js
-et.js
-eu.js
-fa.js
-fi.js
-fr.js
-gl.js
-he.js
-hi.js
-hr.js
-hsb.js
-hu.js
-hy.js
-id.js
-is.js
-it.js
-ja.js
-ka.js
-km.js
-ko.js
-lt.js
-lv.js
-mk.js
-ms.js
-nb.js
-ne.js
-nl.js
-pl.js
-ps.js
-pt-BR.js
-pt.js
-ro.js
-ru.js
-sk.js
-sl.js
-sq.js
-sr-Cyrl.js
-sr.js
-sv.js
-th.js
-tk.js
-tr.js
-uk.js
-vi.js
-zh-CN.js
-zh-TW.js
-
-app/static/admin/js/vendor/xregexp:
-LICENSE.txt
-xregexp.js
-xregexp.min.js
-
-app/static/rest_framework:
-css
-docs
-fonts
-img
-js
-
-app/static/rest_framework/css:
-bootstrap.min.css
-bootstrap.min.css.map
-bootstrap-theme.min.css
-bootstrap-theme.min.css.map
-bootstrap-tweaks.css
-default.css
-font-awesome-4.0.3.css
-prettify.css
-
-app/static/rest_framework/docs:
-css
-img
-js
-
-app/static/rest_framework/docs/css:
-base.css
-highlight.css
-jquery.json-view.min.css
-
-app/static/rest_framework/docs/img:
-favicon.ico
-grid.png
-
-app/static/rest_framework/docs/js:
-api.js
-highlight.pack.js
-jquery.json-view.min.js
-
-app/static/rest_framework/fonts:
-fontawesome-webfont.eot
-fontawesome-webfont.svg
-fontawesome-webfont.ttf
-fontawesome-webfont.woff
-glyphicons-halflings-regular.eot
-glyphicons-halflings-regular.svg
-glyphicons-halflings-regular.ttf
-glyphicons-halflings-regular.woff
-glyphicons-halflings-regular.woff2
-
-app/static/rest_framework/img:
-glyphicons-halflings.png
-glyphicons-halflings-white.png
-grid.png
-
-app/static/rest_framework/js:
-ajax-form.js
-bootstrap.min.js
-coreapi-0.1.1.js
-csrf.js
-default.js
-jquery-3.7.1.min.js
-load-ajax-form.js
-prettify-min.js
+31 directories, 112 files

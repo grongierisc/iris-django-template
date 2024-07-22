@@ -5,14 +5,14 @@
         "iris.script": "objectscript"
       },
     "objectscript.conn" :{
-        "ns": "IRISAPP",
-        "username": "SuperUser",
-        "password": "SYS",
-        "docker-compose": {
-            "service": "iris",
-            "internalPort": 52773
-        },
-        "active": true
+      "ns": "IRISAPP",
+      "username": "SuperUser",
+      "password": "SYS",
+      "docker-compose": {
+        "service": "iris",
+        "internalPort": 52773
+      },
+      "active": true
     },
     "[python]": {
       "editor.defaultFormatter": "ms-python.autopep8"
