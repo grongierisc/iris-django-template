@@ -23,7 +23,7 @@
     },
     methods: {
       async sendQuery() {
-        const response = await fetch('/api/conversations/query/', {
+        const response = await fetch('/django/api/conversations/query/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

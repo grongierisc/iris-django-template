@@ -24,6 +24,7 @@ RUN rm -f /usr/lib/python3.12/EXTERNALLY-MANAGED
 RUN apt-get update && apt-get install -y \
 	git \
 	nano \
+	npm \
 	sudo && \
 	/bin/echo -e ${ISC_PACKAGE_MGRUSER}\\tALL=\(ALL\)\\tNOPASSWD: ALL >> /etc/sudoers && \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER}

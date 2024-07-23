@@ -15,6 +15,13 @@ iop -m /irisdev/app/app/interop/settings.py
 # start production
 iop --start Python.Production --detach
 
+#run npm run build in the frontend
+cd /irisdev/app/app/frontend
+
+npm install
+
+npm run build
+
 # Move to the app directory
 cd /irisdev/app/app
 

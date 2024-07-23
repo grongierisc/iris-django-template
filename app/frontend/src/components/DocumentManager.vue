@@ -63,7 +63,7 @@
       },
       async saveDocument(document) {
         // Save document via API
-        const response = await fetch('/api/documents/', {
+        const response = await fetch('django/api/documents/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -77,7 +77,7 @@
         // Implement model loading logic
       },
       async queryDatabase() {
-        const response = await fetch('/api/conversations/query/', {
+        const response = await fetch('django/api/conversations/query/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,16 +91,16 @@
         this.conversations.push(newConversation);
       },
       async deleteDocument(id) {
-        await fetch(`/api/documents/${id}/`, {
+        await fetch(`django/api/documents/${id}/`, {
           method: 'DELETE',
         });
         this.documents = this.documents.filter(doc => doc.id !== id);
       },
     },
     async created() {
-      const docResponse = await fetch('/api/documents/');
+      const docResponse = await fetch('django/api/documents/');
       this.documents = await docResponse.json();
-      const convoResponse = await fetch('/api/conversations/');
+      const convoResponse = await fetch('django/api/conversations/');
       this.conversations = await convoResponse.json();
     },
   };
