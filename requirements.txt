@@ -13,8 +13,11 @@ iris-pex-embedded-python>=2.0.0
 llama-index
 transformers
 llama-index-embeddings-huggingface
-python-dotenv
+
 llama-iris
+
+#for connection to the database
+python-dotenv
 
 ## for testing
 pytest

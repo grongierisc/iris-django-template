@@ -22,7 +22,8 @@ class ConversationViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['post'])
     def query(self, request):
         prompt = request.data.get('prompt')
-        model_name = request.data.get('model_name')
+        #model_name = request.data.get('model_name')
+        model_name = 'facebook/rag-token-nq'
         response, related_docs = query_rag_model(prompt, model_name)
         conversation = Conversation.objects.create(
             model_name=model_name,

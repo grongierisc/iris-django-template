@@ -6,6 +6,16 @@
 # wait for iris to be ready
 /usr/irissys/dev/Cloud/ICM/waitISC.sh
 
+# Obtain the IRIS super port and web port
+IRIS_SUPER_PORT=$(iris list | grep 'IRIS has started' | awk '{print $9}')
+IRIS_WEB_PORT=$(iris list | grep 'IRIS has started' | awk '{print $11}')
+
+# Construct the connection string
+export IRIS_CONNECTION_STRING="iris://${IRISUSERNAME}:${IRISPASSWORD}@localhost:${IRIS_SUPER_PORT}/${IRISNAMESPACE}"
+
+# Print the connection string for verification
+echo "IRIS_CONNECTION_STRING=${IRIS_CONNECTION_STRING}"
+
 # init iop
 iop --init
 

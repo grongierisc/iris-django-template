@@ -1,43 +1,41 @@
 <template>
+  <div id="nav">
+    <button @click="switchView('hello')">Hello World</button>
+    <button @click="switchView('documents')">Document Manager</button>
+    <button @click="switchView('conversations')">Conversation Manager</button>
+  </div>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/documents">Documents</router-link> |
-      <router-link to="/conversations">Conversations</router-link>
-    </nav>
-    <router-view />
+    <hello-world v-if="currentView === 'hello'"></hello-world>
+    <document-manager v-if="currentView === 'documents'"></document-manager>
+    <conversation-manager v-if="currentView === 'conversations'"></conversation-manager>
   </div>
 </template>
 
 <script>
+import HelloWorld from '@/components/HelloWorld.vue';
+import DocumentManager from '@/components/DocumentManager.vue';
+import ConversationManager from '@/components/ConversationManager.vue';
+
 export default {
   name: 'App',
+  components: {
+    HelloWorld,
+    DocumentManager,
+    ConversationManager,
+  },
+  data() {
+    return {
+      currentView: 'hello' // Default view
+    };
+  },
+  methods: {
+    switchView(view) {
+      this.currentView = view;
+    }
+  }
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-nav {
-  padding: 10px;
-  background-color: #f8f9fa;
-  margin-bottom: 20px;
-}
-
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #42b983;
-}
-
-nav a.router-link-active {
-  font-weight: bold;
-}
+/* Add your styles here */
 </style>

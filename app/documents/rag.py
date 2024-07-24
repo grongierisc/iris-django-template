@@ -1,5 +1,5 @@
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from llama_index.core import StorageContext
 from llama_index.core import VectorStoreIndex
 from llama_iris import IRISVectorStore
@@ -8,12 +8,12 @@ from .embedding import generate_embedding
 
 #load_dotenv(override=True)
 
-#CONNECTION_STRING = os.getenv("CONNECTION_STRING")
+IRIS_CONNECTION_STRING = os.getenv("IRIS_CONNECTION_STRING")
 
 def query_rag_model(prompt, model_name):
     documents = Document.objects.all()
     vector_store = IRISVectorStore.from_params(
-        connection_string=iris.connect("localhost:1972/USER", "_system", "SYS"),
+        connection_string=IRIS_CONNECTION_STRING,
         table_name="documents",
         embed_dim=768,  # Assuming BAAI/bge-small-en-v1.5 embedding dimension
     )
