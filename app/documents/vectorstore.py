@@ -13,6 +13,7 @@ from sqlalchemy.orm.session import close_all_sessions
 import json
 
 
+# This code is from llama-iris, with some modifications to make it work with the current version of the Llama Index
 
 _logger = logging.getLogger(__name__)
 
@@ -271,6 +272,25 @@ LANGUAGE OBJECTSCRIPT
                 )
             ),
         )
+    
+    def _drop_table(self) -> None:
+        """
+        Drops the table from the database if it exists.
+        """
+        try:
+            with self._session() as session, session.begin():
+                self._base.metadata.drop_all(session.connection(), tables=[self._table_class.__table__])
+            logging.info(f"Table {self.table_name} dropped successfully.")
+        except Exception as e:
+            logging.error(f"Failed to drop table {self.table_name}: {e}")
+            raise
+
+    def drop_table(self) -> None:
+        """
+        Public method to drop the table. Ensures that the vector store is initialized before dropping the table.
+        """
+        self._initialize()
+        self._drop_table()
 
     def add(self, nodes: List[BaseNode], **add_kwargs: Any) -> List[str]:
         self._initialize()
