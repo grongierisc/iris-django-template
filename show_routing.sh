@@ -2,10 +2,11 @@
 
 # Define the routing-related files to display
 declare -a files=(
-    "app/app/urls.py"
-    "app/community/urls.py"
-    "app/documents/urls.py"
-    "app/frontend/src/router/index.js"
+    "app/frontend/src/App.vue"
+    "app/frontend/src/main.js"
+    "app/frontend/src/components/DocumentManager.vue"
+    "app/frontend/src/components/HelloWorld.vue"
+
 )
 
 # Output the contents of the routing-related files

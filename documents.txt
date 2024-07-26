@@ -1,0 +1,249 @@
+=== Contents of app/frontend/src/App.vue ===
+<template>
+  <div id="nav">
+    <button @click="switchView('hello')">Hello World</button>
+    <button @click="switchView('documents')">Document Manager</button>
+  </div>
+  <div id="app">
+    <hello-world v-if="currentView === 'hello'"></hello-world>
+    <document-manager v-if="currentView === 'documents'"></document-manager>
+  </div>
+</template>
+
+<script>
+import HelloWorld from '@/components/HelloWorld.vue';
+import DocumentManager from '@/components/DocumentManager.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+    DocumentManager,
+  },
+  data() {
+    return {
+      currentView: 'hello' // Default view
+    };
+  },
+  methods: {
+    switchView(view) {
+      this.currentView = view;
+    }
+  }
+};
+</script>
+
+<style>
+/* Add your styles here */
+</style>
+
+=== Contents of app/frontend/src/main.js ===
+import { createApp } from 'vue';
+import App from './App.vue';
+
+createApp(App).mount('#app');
+
+=== Contents of app/frontend/src/components/DocumentManager.vue ===
+<template>
+  <div class="document-manager">
+    <h1>Document Manager</h1>
+    <input type="file" @change="handleFileUpload" />
+    <textarea v-model="plainText" placeholder="Paste plain text here"></textarea>
+    <button @click="addPlainText">Add Text</button>
+    <button @click="convertToEmbeddings">Convert to Embeddings</button>
+    <select v-model="selectedModel">
+      <option v-for="model in models" :key="model" :value="model">{{ model }}</option>
+    </select>
+    <button @click="loadModel">Load Model</button>
+    <button @click="queryDatabase">Query Database</button>
+    <div v-if="documents.length > 0">
+      <h2>Documents</h2>
+      <div v-for="document in documents" :key="document.id" class="document">
+        <h3>{{ document.title }}</h3>
+        <p>{{ document.content }}</p>
+        <button @click="deleteDocument(document.id)">Delete</button>
+      </div>
+    </div>
+    <div v-if="conversations.length > 0">
+      <h2>Conversations</h2>
+      <div v-for="conversation in conversations" :key="conversation.id" class="conversation">
+        <h3>{{ conversation.prompt }}</h3>
+        <p>{{ conversation.response }}</p>
+        <div v-for="doc in conversation.documents" :key="doc.id" class="document">
+          <h3>{{ doc.title }}</h3>
+          <p>{{ doc.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      documents: [],
+      conversations: [],
+      file: null,
+      plainText: '',
+      selectedModel: '',
+      models: ['model1', 'model2'], // Add model names here
+    };
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+    },
+    addPlainText() {
+      // Implement plain text addition logic
+      const plainTextDocument = {
+        title: 'Plain Text',
+        content: this.plainText,
+      };
+      //this.documents.push(plainTextDocument);
+      this.documents = [plainTextDocument, ...this.documents];
+      this.plainText = '';
+    },
+    convertToEmbeddings() {
+      // Implement file reading, embedding conversion, and API call to save the document
+      if (this.file) {
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+          const content = e.target.result;
+          const document = { title: this.file.name, content: content };
+          await this.saveDocument(document);
+        };
+        reader.readAsText(this.file);
+      }
+    },
+    async saveDocument(document) {
+      // Save document via API
+      const response = await fetch('/django/api/documents/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(document),
+      });
+      const newDocument = await response.json();
+      //this.documents.push(newDocument);
+      this.documents = [newDocument, ...this.documents];
+    },
+    loadModel() {
+      // Implement model loading logic
+    },
+    async queryDatabase() {
+      const response = await fetch('/django/api/conversations/query/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: this.plainText,
+          model_name: this.selectedModel,
+        }),
+      });
+      const newConversation = await response.json();
+      //this.conversations.push(newConversation);
+      this.conversations = [newConversation, ...this.conversations];
+    },
+    async deleteDocument(id) {
+      await fetch(`/django/api/documents/${id}/`, {
+        method: 'DELETE',
+      });
+      this.documents = this.documents.filter(doc => doc.id !== id);
+    },
+  },
+  async created() {
+    const docResponse = await fetch('/django/api/documents/');
+    this.documents = await docResponse.json();
+    const convoResponse = await fetch('/django/api/conversations/');
+    this.conversations = await convoResponse.json();
+  },
+};
+</script>
+
+<style scoped>
+.document-manager {
+  padding: 20px;
+  background-color: #e7cdb3;
+  color: #253e58;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #3F7865;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #3F7865;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #253e58;
+}
+
+.document, .conversation {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #cd9fa2;
+  border-radius: 5px;
+}
+</style>
+
+=== Contents of app/frontend/src/components/HelloWorld.vue ===
+<template>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <p>
+      Welcome to our RAG Application. This is your hub for managing conversations and documents.<br>
+      Explore the features and get started with your AI-powered tasks.
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  }
+}
+</script>
+
+<style scoped>
+.hello {
+  padding: 20px;
+  background-color: #e7cdb3;
+  color: #253e58;
+}
+
+h3 {
+  margin: 40px 0 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #3F7865;
+}
+</style>
+

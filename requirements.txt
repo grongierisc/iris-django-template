@@ -11,10 +11,9 @@ iris-pex-embedded-python>=2.0.0
 
 #for RAG
 llama-index
-transformers
-llama-index-embeddings-huggingface
 
 llama-iris
+
 
 #for connection to the database
 python-dotenv

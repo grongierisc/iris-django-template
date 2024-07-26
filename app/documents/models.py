@@ -1,14 +1,10 @@
+#a documents model to store the documents
+
 from django.db import models
 
 class Document(models.Model):
-    title = models.CharField(max_length=100)
+    doc_id = models.CharField(max_length=255)
+    name = models.TextField()
     content = models.TextField()
-    embedding = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-class Conversation(models.Model):
-    model_name = models.CharField(max_length=100)
-    prompt = models.TextField()
-    response = models.TextField()
-    documents = models.ManyToManyField(Document)
-    created_at = models.DateTimeField(auto_now_add=True)
